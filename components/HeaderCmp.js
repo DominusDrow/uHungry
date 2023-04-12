@@ -3,7 +3,7 @@ import { Header, Icon, Avatar } from '@rneui/themed';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
-export const HeaderMine = () => {
+export const HeaderCmp = () => {
   return (
     <View >
      <Header
