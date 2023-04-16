@@ -30,19 +30,24 @@ const ScreenLogin = ({ navigation }) => {
 
 
   return (
+    
     <View style={styles.container}>
+      
       <View style={styles.cuadrado}>
         
       </View>
+      <Image style={styles.img} source={require("../assets/img/perfil.png")} />
       <View style={styles.QLogin}>
-        <Input
-        placeholder='Usuario'
-        leftIcon={<Icon name="account-outline" size={20} />}
-        />
-        <Input
-          placeholder='Contraseña'
-          leftIcon={{ type: 'font-awesome', name: 'chevron-left' }}
-        />
+        <View style={styles.Inputs}>
+          <Input
+          placeholder='Usuario'
+          leftIcon={<Icon name="account-outline" size={20} />}
+          />
+          <Input
+            placeholder='Contraseña'
+            leftIcon={{ type: 'font-awesome', name: 'chevron-left' }}
+          />
+        </View>
         <Button
           title="Log in"
           loading={false}
@@ -70,6 +75,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+    alignItems:"center",
   },
 
   cuadrado: {
@@ -90,12 +96,16 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     alignItems: 'center',
   },
+
+  Inputs:{
+    position: "absolute",
+    width: "80%",
+    marginTop:"30%"
+  },
   
   img: {
-    width: "80%",
-    height: 300,
-    marginTop: "30%",
-    marginLeft: "10%",
+    position: "absolute",
+    height: 200,
     resizeMode: "contain",
   },
 
