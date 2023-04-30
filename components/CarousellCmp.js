@@ -1,36 +1,32 @@
 import React from "react";
+import { StyleSheet, Text, View, FlatList, Dimensions, SafeAreaView, Animated } from 'react-native';
 import { Image } from "@rneui/base";
-import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
-import Carousel from "react-native-snap-carousel";
-import PropTypes from "prop-types";
 
-export default function CarouselCmp({ imagenes, height, width }){
-  const renderItem = ({ item }) => {
-    return (
-      <Image
-        style={{ width, height }}
-        PlaceholderContent={<ActivityIndicator color="fff"/>}
-        source={{ uri: item }}
-      />
-    )
-  }
+const widthScreen = Dimensions.get("window").width;
 
+export const CarouselCmp = ({ data }) => {
   return (
-    <Carousel
-      layout={"default"}
-      data = {imagenes}
-      sliderWidth={width}
-      itemWidth={width}
-      itemHeight={height}
-      renderItem={renderItem}
-    />
-  )
-
-}
-
-CarouselCmp.propTypes = {
-  imagenes: PropTypes.array.isRequired,
-  height: PropTypes.number.isRequired,
-  width: PropTypes.number.isRequired,
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={data}
+        renderItem={({ item }) => (
+          <Image style={{ width: widthScreen, height: 200 }} source={{ uri: item }} />
+        )}
+        keyExtractor={(index) => index.toString()}
+        pagingEnabled
+        horizontal
+        showsHorizontalScrollIndicator={false}
+      />
+    </SafeAreaView>
+  );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    width: widthScreen,
+    height: 200,
+  },
+});
 
