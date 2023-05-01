@@ -8,6 +8,7 @@ import * as authActions from "../validators/actions/authActions";
 import { useSelector } from 'react-redux';
 
 const ScreenLogin = ({ navigation }) => {
+  
 
   const dispatch = useDispatch();
 

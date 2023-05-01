@@ -8,6 +8,8 @@ export const HeaderCmp = () => {
     <View >
      <Header
       leftComponent={{
+
+
         icon: 'menu',
         color: '#fff',
       }}
