@@ -17,6 +17,40 @@ function noScreenForNow() {
   );
 }
 
+export const StackNavigator = () => {
+  return (
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: '#e91e63',
+        tabBarInactiveTintColor: 'gray',
+      }}
+    >
+      <Tab.Screen
+        name="Inicio"
+        component={ScreenMainUser}
+        options={{
+          tabBarIcon: ({ focused, color, size }) => {
+            return <Icon name="home" size={size} color={color} />;
+          },
+        }}
+      />
+      <Tab.Screen
+        name="Buscar"
+        component={noScreenForNow}
+        options={{
+          tabBarIcon: ({ focused, color, size }) => {
+            return <Icon name="search" size={size} color={color} />;
+          },
+        }}
+      />
+
+      </Tab.Navigator>
+  );
+}
+      
+
+
 
 export const StackLogin = () => {
   return (

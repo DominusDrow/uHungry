@@ -8,7 +8,6 @@ export default function ScreenMainUser({ navigation }) {
   return (
     <View>
 
-      <BurgerMenu />
       <HeaderCmp />
 
       <CarousellCmp />
