@@ -1,6 +1,4 @@
 import { View, Text } from 'react-native';
-import { Icon } from '@rneui/themed';
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import ScreenLogin from "../screens/ScreenLogin";
@@ -8,12 +6,8 @@ import ScreenMainUser from "../screens/ScreenMainUser";
 
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
-import { HeaderCmp } from '../components/HeaderCmp';
 
-
-const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
-
 const Drawer = createDrawerNavigator();
 
 
