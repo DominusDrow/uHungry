@@ -8,7 +8,7 @@ export default function ScreenMainUser({ navigation }) {
   return (
     <View>
 
-      <HeaderCmp />
+      <HeaderCmp navigation={navigation} />
 
       <CarousellCmp />
 

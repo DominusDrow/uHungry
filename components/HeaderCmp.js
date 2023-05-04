@@ -3,17 +3,24 @@ import { Header, Icon, Avatar } from '@rneui/themed';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
-export const HeaderCmp = () => {
+export const HeaderCmp = ({ navigation }) => {
   return (
     <View >
-     <Header
-      leftComponent={{
+      <Header
+        leftComponent={
+          <View>
+
+            <TouchableOpacity
+              onPress={() => { navigation.openDrawer() }}
+            >
+
+              <Icon type="entypo" name="menu" size={30} color="white" />
+            </TouchableOpacity>
+          </View>
 
 
-        icon: 'menu',
-        color: '#fff',
-      }}
-      rightComponent={
+        }
+        rightComponent={
           <View style={styles.headerRight}>
 
             <TouchableOpacity
@@ -23,44 +30,44 @@ export const HeaderCmp = () => {
               <Icon type="entypo" name="shopping-cart" color="white" />
             </TouchableOpacity>
           </View>
-      }
-       centerComponent={
-         <View style={styles.headerContainer}>
-          <Avatar
-            rounded
-            source={{ uri: "https://randomuser.me/api/portraits/men/36.jpg" }}
-          />
-          <Text style={styles.subheaderText}>John</Text>
-        </View>
-      }
-    />     
+        }
+        centerComponent={
+          <View style={styles.headerContainer}>
+            <Avatar
+              rounded
+              source={{ uri: "https://randomuser.me/api/portraits/men/36.jpg" }}
+            />
+            <Text style={styles.subheaderText}>John</Text>
+          </View>
+        }
+      />     
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-headerContainer: {
-  justifyContent: 'center',
-  alignItems: 'center',
-  //backgroundColor: '#397af8',
-  width: '100%',
-  flexDirection: 'row',
-},
-heading: {
-  color: 'white',
-  fontSize: 22,
-  fontWeight: 'bold',
-},
-headerRight: {
-  display: 'flex',
-  flexDirection: 'row',
-  marginTop: 5,
-},
-subheaderText: {
-  color: 'white',
-  fontSize: 16,
-  fontWeight: 'bold',
-  paddingLeft: 10,
-},
+  headerContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    //backgroundColor: '#397af8',
+    width: '100%',
+    flexDirection: 'row',
+  },
+  heading: {
+    color: 'white',
+    fontSize: 22,
+    fontWeight: 'bold',
+  },
+  headerRight: {
+    display: 'flex',
+    flexDirection: 'row',
+    marginTop: 5,
+  },
+  subheaderText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+    paddingLeft: 10,
+  },
 });
 
