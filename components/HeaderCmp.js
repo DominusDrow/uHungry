@@ -3,15 +3,16 @@ import { Header, Icon, Avatar } from '@rneui/themed';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
-export const HeaderCmp = ({ navigation }) => {
+export const HeaderCmp = (props) => {
   return (
     <View >
+
       <Header
         leftComponent={
           <View>
 
             <TouchableOpacity
-              onPress={() => { navigation.openDrawer() }}
+              onPress={() => { props.navigation.openDrawer() }}
             >
 
               <Icon type="entypo" name="menu" size={30} color="white" />

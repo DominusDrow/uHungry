@@ -26,12 +26,14 @@ export const StackNavigator = () => {
       //drawerContent={(props) => <HeaderCmp {...props} />}
     >
       <Drawer.Screen 
-        name="Home" 
+        name="ScreenMainUser" 
         component={ScreenMainUser} 
-        options={{ headerShown: false }} />
+        options={{ headerShown: false }} 
+      />
       <Drawer.Screen 
         name="Settings" 
-        component={NoScreenForNow} />
+        component={NoScreenForNow} 
+      />
     </Drawer.Navigator>
   );
 }
