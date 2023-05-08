@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import ScreenLogin from "../screens/ScreenLogin";
 import ScreenMainUser from "../screens/ScreenMainUser";
+import { ScreenRestaurant } from '../screens/ScreenRestaurant';
 
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
@@ -63,6 +64,15 @@ export const StackMain = () => {
         component={StackNavigator}
         options={{ headerShown: false }}
       />
+
+      <Stack.Screen
+        name="ScreenRestaurant"
+        component={ScreenRestaurant}
+        options={{ headerShown: false }}
+      />
+
+
+
     </Stack.Navigator>
   );
 };

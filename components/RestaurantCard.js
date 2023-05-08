@@ -2,22 +2,22 @@ import React from 'react';
 import {View, StyleSheet, Text, Dimensions, Image, ImageBackground} from "react-native";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-const RestaurantCard = (props) =>{
+const RestaurantCard = ({ navigation, productInfo }) =>{
     const redirect = () =>{
-        props.navigation.navigate("ScreenRestaurante", {productInfo:props.productInfo});
+        navigation.navigate("ScreenRestaurant", {productInfo:productInfo});
     }
     return(
         <View style={styles.container}>
             <View style={styles.card}>
                 <TouchableOpacity onPress={redirect}>
                     <View style={{height:'100%',width:'100%', justifyContent:'center', alignItems:'center'}}>
-                        <Image source={{uri: props.productInfo.background}} style={styles.background}/>
-                        <Image source={{uri: props.productInfo.image}} style={styles.image}/>
+                        <Image source={{uri: productInfo.background}} style={styles.background}/>
+                        <Image source={{uri: productInfo.image}} style={styles.image}/>
                     </View>
                 </TouchableOpacity>
             </View>
-            <Text style={styles.text}>{props.productInfo.name}</Text>
-            <Text style={styles.text2}>{props.productInfo.deliveryTime}</Text>
+            <Text style={styles.text}>{productInfo.name}</Text>
+            <Text style={styles.text2}>{productInfo.deliveryTime}</Text>
         </View>
     )
 }
