@@ -1,9 +1,11 @@
 import { View, Text } from 'react-native';
 import { createStackNavigator } from "@react-navigation/stack";
 
+import MenuUser from '../components/MenuUser';
+
 import ScreenLogin from "../screens/ScreenLogin";
-import ScreenMainUser from "../screens/ScreenMainUser";
-import { ScreenRestaurant } from '../screens/ScreenRestaurant';
+import ScreenMainUser from "../screens/user/ScreenMainUser";
+import { ScreenRestaurant } from '../screens/user/ScreenRestaurant';
 
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
@@ -24,7 +26,7 @@ export const StackNavigator = () => {
   return (
     <Drawer.Navigator
       initialRouteName="Home"
-      //drawerContent={(props) => <HeaderCmp {...props} />}
+      drawerContent={(props) => <MenuUser {...props} />}
     >
       <Drawer.Screen 
         name="ScreenMainUser" 
@@ -76,4 +78,3 @@ export const StackMain = () => {
     </Stack.Navigator>
   );
 };
-

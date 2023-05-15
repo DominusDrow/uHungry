@@ -1,11 +1,13 @@
 import {  View, FlatList, TouchableOpacity, Text, StyleSheet, Image, Dimensions } from 'react-native';
 import { SearchBar } from '@rneui/themed';
-import { HeaderCmp } from '../components/HeaderCmp';
-import { CarousellCmp } from '../components/CarousellCmp';
+import { HeaderCmp } from '../../components/HeaderCmp';
+import { CarousellCmp } from '../../components/CarousellCmp';
 
-import RestaurantCard from '../components/RestaurantCard';
 
-import { RESTAURANT } from '../dummy-data/data';
+
+import RestaurantCard from '../../components/RestaurantCard';
+
+import { RESTAURANT } from '../../dummy-data/data';
 
 export default function ScreenMainUser({ navigation }) {
 

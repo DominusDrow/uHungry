@@ -1,26 +1,26 @@
 //SCREEN 1
-import { View, StyleSheet, Text, Image, Dimensions} from "react-native";
+import { View, StyleSheet, Text, Image, Dimensions, Alert} from "react-native";
 import { Button } from '@rneui/themed';
-
 
 import { useDispatch } from "react-redux";
 import * as authActions from "../validators/actions/authActions";
-import { useSelector } from 'react-redux';
 
 const ScreenLogin = ({ navigation }) => {
-  
 
   const dispatch = useDispatch();
 
 
-  function goToNumber() {
-    navigation.navigate("ScreenTelefonoValido");
-  }
-
-
-  const onClick = () => {
+  const LoginUser = () => {
     try {
-      dispatch(authActions.tryTrue());
+      dispatch(authActions.tryLogin('user'));
+    } catch (e) {
+      Alert.alert("Error", e.toString(), [{ text: "Ok" }]);
+    }
+  };
+
+  const LoginAdmin = () => {
+    try {
+      dispatch(authActions.tryLogin('admin'));
     } catch (e) {
       Alert.alert("Error", e.toString(), [{ text: "Ok" }]);
     }
@@ -33,7 +33,7 @@ const ScreenLogin = ({ navigation }) => {
       <Image style={styles.img} source={require("../assets/img/hungry.jpg")} />
 
       <Button
-        title="Log in"
+        title="Login user"
         loading={false}
         loadingProps={{ size: 'small', color: 'white' }}
         buttonStyle={{
@@ -47,8 +47,26 @@ const ScreenLogin = ({ navigation }) => {
           width: 200,
           marginVertical: 50,
         }}
-        onPress={() => onClick()}
+        onPress={() => LoginUser()}
       />
+
+      <Button
+        title="Login admin"
+        loading={false}
+        loadingProps={{ size: 'small', color: 'white' }}
+        buttonStyle={{
+          backgroundColor: 'rgba(128, 255, 128, 1)',
+          borderRadius: 5,
+        }}
+        titleStyle={{ fontWeight: 'bold', fontSize: 23 }}
+        containerStyle={{
+          marginHorizontal: 100,
+          height: 50,
+          width: 200,
+        }}
+        onPress={() => LoginAdmin()}
+      />
+
 
     </View>
   );

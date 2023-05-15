@@ -136,7 +136,6 @@ const styles = StyleSheet.create({
   },
   headerOutInfoText1:{
     color: 'white',
-    fontFamily: 'Nunito-Bold',
     fontSize: 20,
     textShadowColor: 'rgba(0, 0, 0, 0.75)',
     textShadowOffset: {width: -1, height: 1},
@@ -144,7 +143,6 @@ const styles = StyleSheet.create({
   },
   headerOutInfoText2:{
     color: 'white',
-    fontFamily: 'Nunito-SemiBold',
     fontSize: 10,
     textShadowColor: 'rgba(0, 0, 0, 0.75)',
     textShadowOffset: {width: -1, height: 1},
@@ -175,7 +173,6 @@ const styles = StyleSheet.create({
     alignContent: 'center',
   },
   resInfoText:{
-    fontFamily:'Nunito-SemiBold',
     fontSize: 10,
     position: 'absolute',
     marginTop: Dimensions.get('window').width*0.009,
@@ -254,12 +251,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   deliveryTextOn:{
-    fontFamily:'Nunito-Bold',
     fontSize: 12.5,
     color: 'white',
   },
   deliveryTextOff:{
-    fontFamily:'Nunito-Bold',
     fontSize: 12.5,
     color: 'gray',
   },
@@ -284,12 +279,10 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   textAdicional1:{
-    fontFamily:'Nunito-Bold',
     fontSize: 8,
     color: '#322826',
   },
   textAdicional2:{
-    fontFamily:'Nunito-Bold',
     fontSize: 8,
     color: '#2AA761',
   },
@@ -344,7 +337,6 @@ const styles = StyleSheet.create({
   buttonCarritoTextText:{
     color: 'white',
     fontSize: 15,
-    fontFamily: 'Nunito-Bold'
   },
   buttonCarritoAcumuladoCost:{
     width: '20%',

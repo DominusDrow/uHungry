@@ -1,14 +1,15 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
-import { StackLogin, StackMain} from './AppNavigator';
+
+import { StackLogin, StackMain} from './UserNavigation';
+import { StackAdmin } from './AdminNavigator';
 
 const LoginValidation = (props) => {
-    const isAuth = useSelector(state=>state.auth.login);
+    const Auth = useSelector(state=>state.auth.login);
     return (
         <NavigationContainer>
-            {isAuth && <StackMain/>}
-            {!isAuth && <StackLogin/>}
+            {Auth === 'user' ? <StackMain /> : Auth === 'admin' ? <StackAdmin /> : <StackLogin />}
         </NavigationContainer>
     );
 }
