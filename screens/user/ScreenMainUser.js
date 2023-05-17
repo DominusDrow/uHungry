@@ -1,9 +1,8 @@
 import {  View, FlatList, TouchableOpacity, Text, StyleSheet, Image, Dimensions } from 'react-native';
-import { SearchBar } from '@rneui/themed';
 import { HeaderCmp } from '../../components/HeaderCmp';
 import { CarousellCmp } from '../../components/CarousellCmp';
 
-
+import SearchBarCmp from '../../components/SearchBarCmp';
 
 import RestaurantCard from '../../components/RestaurantCard';
 
@@ -18,12 +17,7 @@ export default function ScreenMainUser({ navigation }) {
 
       <CarousellCmp />
 
-      <SearchBar
-        placeholder="Type Here..."
-        lightTheme={true}
-        platform="ios"
-        containerStyle={{ backgroundColor: 'white', margin: 0, padding: 0 }}
-      />
+      <SearchBarCmp navigation={navigation} />
 
 
       <View >

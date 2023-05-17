@@ -6,6 +6,7 @@ import MenuUser from '../components/MenuUser';
 import ScreenLogin from "../screens/ScreenLogin";
 import ScreenMainUser from "../screens/user/ScreenMainUser";
 import { ScreenRestaurant } from '../screens/user/ScreenRestaurant';
+import ScreenSettings from '../screens/user/ScreenSettings';
 
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
@@ -35,7 +36,7 @@ export const StackNavigator = () => {
       />
       <Drawer.Screen 
         name="Settings" 
-        component={NoScreenForNow} 
+        component={ScreenSettings} 
       />
     </Drawer.Navigator>
   );
@@ -72,8 +73,6 @@ export const StackMain = () => {
         component={ScreenRestaurant}
         options={{ headerShown: false }}
       />
-
-
 
     </Stack.Navigator>
   );
