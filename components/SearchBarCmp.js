@@ -33,7 +33,7 @@ export default function SearchBarCmp({ navigation }) {
     <>
      <TouchableOpacity style={styles.button} onPress={() => setModalVisible(true)}>
         <Icon name="search" color="gray" />
-        <Text style={styles.buttonText}>Buscar</Text>
+        <Text style={styles.buttonText}>Busca producto</Text>
 
       </TouchableOpacity>
 
@@ -54,7 +54,7 @@ export default function SearchBarCmp({ navigation }) {
             loadingProps={{}}
             onChangeText={newVal => setValue(newVal)}
             onClearText={() => setValue('')}
-            placeholder="Type query here..."
+            placeholder="Busca producto"
             placeholderTextColor="#888"
             cancelButtonTitle="Cancel"
             cancelButtonProps={{}}
@@ -74,10 +74,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#DDDDDD',
     padding: 10,
     marginVertical: 10,
+    marginHorizontal: 10,
+    borderRadius: 50,
   },
   buttonText: {
     fontSize: 16,
-    fontWeight: 'bold',
+    color: 'gray',
+    marginLeft: 40,
   },
 
 
