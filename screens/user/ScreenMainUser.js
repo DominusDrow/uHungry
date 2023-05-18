@@ -1,4 +1,4 @@
-import {  View, FlatList, TouchableOpacity, Text, StyleSheet, Image, Dimensions } from 'react-native';
+import {  View, FlatList, TouchableOpacity, Text, StyleSheet, Image, Dimensions, ScrollView } from 'react-native';
 import { HeaderCmp } from '../../components/HeaderCmp';
 import { CarousellCmp } from '../../components/CarousellCmp';
 
@@ -20,16 +20,17 @@ export default function ScreenMainUser({ navigation }) {
       <SearchBarCmp navigation={navigation} />
 
 
-      <View >
+      <ScrollView showsVerticalScrollIndicator={false}>
         <FlatList
           data={RESTAURANT}
-          scrollEnabled={true}
+          scrollEnabled={false}
           keyExtractor={item => item.id.toString()}
           renderItem= {itemData => (
             <RestaurantCard navigation={navigation} productInfo={itemData.item}/>
           )}
+          vertical
         />
-      </View>
+      </ScrollView>
 
 
     </View>

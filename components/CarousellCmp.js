@@ -30,18 +30,15 @@ export const CarousellCmp = () => {
         ref={flatListRef}
         data={images}
         renderItem={({ item }) => (
-          <Image style={{ width: widthScreen, height: 200 }} source={{ uri: item }} />
+          <Image style={styles.image} source={{ uri: item }} />
         )}
         keyExtractor={(index) => index.toString()}
-        pagingEnabled
         horizontal
-
-
-
         onMomentumScrollEnd={(event) => {
           const index = Math.floor(event.nativeEvent.contentOffset.x / widthScreen);
           setCurrentIndex(index);
         }}
+        showsHorizontalScrollIndicator={false}
       />
 
       <View style={styles.dotWrapper}>
@@ -66,12 +63,19 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginVertical: 3,
   },
   dot: {
-    width: 10,
-    height: 10,
-    borderRadius: 5,
+    width: 15,
+    height: 5,
+    borderRadius: 10,
     marginHorizontal: 5,
+  },
+  image: {
+    width: widthScreen * 0.9,
+    height: 200,
+    marginHorizontal: widthScreen * 0.05,
+    marginVertical: 10,
+    borderRadius: 30,
+    resizeMode: 'cover',
   },
 });

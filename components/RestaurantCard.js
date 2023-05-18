@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Text, Dimensions, Image, TouchableOpacity } from 'react-native';
-import { Divider } from '@rneui/themed';
+import { Divider, Icon } from '@rneui/themed';
+
 
 const RestaurantCard = ({ navigation, productInfo }) => {
     const redirect = () => {
@@ -9,14 +10,31 @@ const RestaurantCard = ({ navigation, productInfo }) => {
 
     return (
         <>
-        <Divider />
-        <TouchableOpacity onPress={redirect} style={styles.card}>
-            <Image source={{ uri: productInfo.background }} style={styles.image} />
-            <View style={{flexDirection: 'row' }}>
-                <Image source={{ uri: productInfo.image }} style={styles.logo} />
-                <Text style={styles.text}>{productInfo.name}</Text>
-            </View>
-        </TouchableOpacity>
+            <TouchableOpacity onPress={redirect} style={styles.card}>
+                <Image source={{ uri: productInfo.background }} style={styles.image} />
+                <View style={{flexDirection: 'column', justifyContent: 'space-between', width: '100%'}}>
+                    <View style={{flexDirection: 'row' }}>
+                        <Image source={{ uri: productInfo.image }} style={styles.logo} />
+
+                        <View style={{flexDirection: 'column', marginLeft: 10}}>
+                            <Text style={styles.text}>{productInfo.name}</Text>
+                            <View style={{flexDirection: 'row'}}>
+                                <Icon type="material" name="timer" size={15} color="gray" style={{marginTop: 5}} />
+                                <Text style={styles.subText}>{productInfo.deliveryFee} min</Text>
+                            </View>
+                        </View>
+                        <View style={{flexDirection: 'column', marginLeft: Dimensions.get('window').width * 0.5}}>
+                            <Icon type="material" name="star" size={15} color="#FFD700" style={{marginTop: 5}} />
+                            <Text style={styles.subText}>{productInfo.rating}</Text>
+                        </View>
+                    </View>
+
+                </View>
+            </TouchableOpacity>
+            <Divider
+                orientation="horizontal"
+                style={styles.divider}
+            />
         </>
     );
 };
@@ -26,8 +44,8 @@ export default RestaurantCard;
 const styles = StyleSheet.create({
     card: {
         width: Dimensions.get('window').width,
+        marginLeft: Dimensions.get('window').width * 0.05,
         marginBottom: 10,
-        alignItems: 'center',
     },
     image: {
         width: Dimensions.get('window').width * 0.9,
@@ -38,16 +56,29 @@ const styles = StyleSheet.create({
     text: {
         color: 'black',
         fontWeight: 'bold',
-        fontSize: 18,
+        fontSize: 15,
         textAlign: 'center',
         marginTop: 10,
     },
+    subText: {
+        color: 'gray',
+        fontWeight: 'bold',
+        fontSize: 12,
+        marginTop: 5,
+    },
     logo: {
-        width: 50,
-        height: 50,
+        width: 45,
+        height: 45,
         resizeMode: 'contain',
         borderRadius: 50,
-        marginLeft: 10,
+        marginTop: 5,
+        marginRight: 5,
+    },
+    divider: {
+        width: Dimensions.get('window').width * 0.9,
+        marginTop: -5,
+        marginBottom: 10,
+        marginLeft: Dimensions.get('window').width * 0.05,
     },
 });
 
