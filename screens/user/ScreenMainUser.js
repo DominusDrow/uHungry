@@ -23,8 +23,7 @@ export default function ScreenMainUser({ navigation }) {
       <View >
         <FlatList
           data={RESTAURANT}
-          numColumns={2}
-          scrollEnabled={false}
+          scrollEnabled={true}
           keyExtractor={item => item.id.toString()}
           renderItem= {itemData => (
             <RestaurantCard navigation={navigation} productInfo={itemData.item}/>

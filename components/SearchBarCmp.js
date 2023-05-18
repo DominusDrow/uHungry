@@ -31,7 +31,7 @@ export default function SearchBarCmp({ navigation }) {
 
   return (
     <>
-     <TouchableOpacity style={styles.button} onPress={() => setModalVisible(true)}>
+      <TouchableOpacity style={styles.button} onPress={() => setModalVisible(true)}>
         <Icon name="search" color="gray" />
         <Text style={styles.buttonText}>Busca producto</Text>
 
@@ -46,11 +46,11 @@ export default function SearchBarCmp({ navigation }) {
         <View>
           <SearchBar
             platform="android"
-  containerStyle={styles.searchContainer}
-  inputContainerStyle={styles.inputContainer}
-  inputStyle={styles.input}
-  leftIconContainerStyle={styles.iconContainer}
-  rightIconContainerStyle={styles.iconContainer}
+            containerStyle={styles.searchContainer}
+            inputContainerStyle={styles.inputContainer}
+            inputStyle={styles.input}
+            leftIconContainerStyle={styles.iconContainer}
+            rightIconContainerStyle={styles.iconContainer}
             loadingProps={{}}
             onChangeText={newVal => setValue(newVal)}
             onClearText={() => setValue('')}
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     padding: 10,
     marginVertical: 10,
     marginHorizontal: 10,
-    borderRadius: 50,
+    borderRadius: 30,
   },
   buttonText: {
     fontSize: 16,
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     backgroundColor: '#eee',
-    borderRadius: 10,
+    borderRadius: 30,
   },
   input: {
     fontSize: 16,
@@ -103,7 +103,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginRight: 10,
   },
-
 
 
 });
