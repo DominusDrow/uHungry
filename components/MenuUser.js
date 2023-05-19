@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
 import { Ionicons } from '@expo/vector-icons';
+import { Avatar } from '@rneui/themed';
 
 import { useDispatch } from "react-redux";
 import * as authActions from "../validators/actions/authActions";
@@ -23,6 +24,13 @@ const MenuUser = (props) => {
   return (
     <DrawerContentScrollView {...props}>
       <View style={styles.container}>
+        <Avatar
+          rounded
+          size="xlarge"
+          source={{ uri: "https://randomuser.me/api/portraits/men/36.jpg" }}
+          containerStyle={{ alignSelf: 'center', marginTop: 10 }}
+        />
+
         {/* Sección 1 */}
         <DrawerItem
           label="ScreenMainUser"

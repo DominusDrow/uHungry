@@ -6,6 +6,7 @@ import MenuUser from '../components/MenuUser';
 import ScreenLogin from "../screens/ScreenLogin";
 import ScreenMainUser from "../screens/user/ScreenMainUser";
 import { ScreenRestaurant } from '../screens/user/ScreenRestaurant';
+import { ScreenProduct } from '../screens/user/ScreenProduct';
 import ScreenSettings from '../screens/user/ScreenSettings';
 
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -71,6 +72,12 @@ export const StackMain = () => {
       <Stack.Screen
         name="ScreenRestaurant"
         component={ScreenRestaurant}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="ScreenProduct"
+        component={ScreenProduct}
         options={{ headerShown: false }}
       />
 

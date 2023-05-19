@@ -10,6 +10,7 @@ import { RESTAURANT } from '../../dummy-data/data';
 
 export default function ScreenMainUser({ navigation }) {
 
+  console.log(RESTAURANT.length)
   return (
     <View>
 
@@ -20,17 +21,15 @@ export default function ScreenMainUser({ navigation }) {
       <SearchBarCmp navigation={navigation} />
 
 
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <FlatList
-          data={RESTAURANT}
-          scrollEnabled={false}
-          keyExtractor={item => item.id.toString()}
-          renderItem= {itemData => (
-            <RestaurantCard navigation={navigation} productInfo={itemData.item}/>
-          )}
-          vertical
-        />
-      </ScrollView>
+      <FlatList
+        data={RESTAURANT}
+        scrollEnabled={true}
+        keyExtractor={item => item.id.toString()}
+        renderItem= {itemData => (
+          <RestaurantCard navigation={navigation} productInfo={itemData.item}/>
+        )}
+        showsVerticalScrollIndicator={false}
+      />
 
 
     </View>

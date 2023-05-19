@@ -2,15 +2,9 @@ import { View, Text, Image, StyleSheet, Dimensions, SafeAreaView, Platform, Stat
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Icon } from '@rneui/themed';
 
-import ProductCard from '../../components/ProductCard';
-
-export const ScreenRestaurant = ({ navigation, route }) => {
+export const ScreenProduct = ({ navigation, route }) => {
 
   const { productInfo } = route.params;
-
-  const redirect = () => {
-    navigation.navigate('ScreenProduct', { productInfo });
-  }
 
   const redirectBack = () => {
     navigation.goBack();
@@ -19,10 +13,10 @@ export const ScreenRestaurant = ({ navigation, route }) => {
   return (
     <SafeAreaView style={styles.container}>
 
-      <Image source={{ uri: productInfo.background }} style={styles.image} />
-      <View style={{ flexDirection: 'row', width: '100%' }}>
-        <Image source={{ uri: productInfo.image }} style={styles.logo} />
+      <Image source={{ uri: productInfo.image }} style={styles.image} />
+      <View style={{ flexDirection: 'column', width: '100%' }}>
         <Text style={styles.text}>{productInfo.name}</Text>
+        <Text style={styles.subText}>{productInfo.description}</Text>
       </View>
 
       <View style={styles.backBtn}>
@@ -32,12 +26,10 @@ export const ScreenRestaurant = ({ navigation, route }) => {
       </View>
 
       <View style={styles.btnSearch}>
-        <TouchableOpacity onPress={redirect} style={{alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%'}}>
+        <TouchableOpacity style={{alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%'}}>
           <Icon type="material" name="search" size={25} color="black" />
         </TouchableOpacity>
       </View>
-
-
 
 
 
@@ -46,32 +38,12 @@ export const ScreenRestaurant = ({ navigation, route }) => {
         <View style={{ flexDirection: 'column' }}>
           <View style={{ flexDirection: 'row' }}>
             <Icon type="material" name="timer" size={15} color="gray" style={{ marginTop: 5 }} />
-            <Text style={styles.subText}>Entrega: </Text>
+          <Text style={styles.subText}>{productInfo.cost} pesos</Text>
           </View>
-          <Text style={styles.subText}>{productInfo.deliveryFee} min</Text>
         </View>
-        <View style={{ flexDirection: 'column' }}>
-          <View style={{ flexDirection: 'row' }}>
-            <Icon type="material" name="star" size={15} color="#FFD700" style={{ marginTop: 5 }} />
-            <Text style={styles.subText}>Calificación: </Text>
-          </View>
-          <Text style={styles.subText}>{productInfo.rating}</Text>
-        </View>
+
 
       </View>
-
-      <ScrollView style={{ width: '100%', marginTop: 10 }} showsVerticalScrollIndicator={false}>
-
-        <FlatList
-          data={productInfo.products}
-          scrollEnabled={false}
-          keyExtractor={item => item.id.toString()}
-          renderItem= {itemData => (
-            <ProductCard navigation={navigation} productInfo={itemData.item}/>
-          )}
-        />
-
-      </ScrollView>
 
     </SafeAreaView>
   );
