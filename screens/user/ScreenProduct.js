@@ -2,8 +2,19 @@ import { View, Text, Image, StyleSheet, Dimensions, SafeAreaView, Platform, Stat
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Icon } from '@rneui/themed';
 
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { set } from 'react-native-reanimated';
+
+
 export const ScreenProduct = ({ navigation, route }) => {
 
+
+  const cantidadItems = useSelector(state => state.cart.cantidadItems);
+  const cartTotal = useSelector(state => state.cart.total);
+
+  
+  const [count, setCount] = useState(1);
   const { productInfo } = route.params;
 
   const redirectBack = () => {
@@ -25,24 +36,33 @@ export const ScreenProduct = ({ navigation, route }) => {
         </TouchableOpacity>
       </View>
 
-      <View style={styles.btnSearch}>
-        <TouchableOpacity style={{alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%'}}>
-          <Icon type="material" name="search" size={25} color="black" />
-        </TouchableOpacity>
-      </View>
-
-
-
 
       <View style={{ flexDirection: 'row', width: '100%', justifyContent: 'space-evenly', marginTop: 10 }}>
         <View style={{ flexDirection: 'column' }}>
           <View style={{ flexDirection: 'row' }}>
-            <Icon type="material" name="timer" size={15} color="gray" style={{ marginTop: 5 }} />
-          <Text style={styles.subText}>{productInfo.cost} pesos</Text>
+          <Text style={styles.subText}>$ {productInfo.cost} pesos</Text>
           </View>
         </View>
 
 
+      </View>
+
+      <View style={styles.btnAdd}>
+        <TouchableOpacity  style={{alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%', backgroundColor:'lightgreen'}}>
+          <Text style={{color:"white"}}>Agregar</Text>
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.btnCount}>
+        <TouchableOpacity onPress={() => count > 1 ? setCount(count - 1) : setCount(count) } style={{alignItems: 'center', justifyContent: 'center', height: '100%', backgroundColor:'white'}}>
+          <Icon type='entypo' name='minus' size={25} color='black' />
+        </TouchableOpacity>
+        <Text tyle={{alignItems: 'center', justifyContent: 'center', height: '100%'}}>
+          {count}
+        </Text>
+        <TouchableOpacity onPress={() => count < 10 ? setCount(count + 1) : setCount(count)} style={{alignItems: 'center', justifyContent: 'center', height: '100%', backgroundColor:'white'}}>
+          <Icon type='entypo' name='plus' size={25} color='black' />
+        </TouchableOpacity>
       </View>
 
     </SafeAreaView>
@@ -73,8 +93,8 @@ const styles = StyleSheet.create({
   subText: {
     color: 'gray',
     fontWeight: 'bold',
-    fontSize: 12,
-    marginTop: 5,
+    fontSize: 15,
+    margin: 20,
     alignSelf: 'center',
   },
   logo: {
@@ -97,15 +117,28 @@ const styles = StyleSheet.create({
     top: 60,
     zIndex: 1,
   },
-  btnSearch: {
+  btnAdd: {
     position: 'absolute',
-    width: Dimensions.get('window').width*0.09,
-    height: Dimensions.get('window').width*0.09,
-    backgroundColor: 'rgba(255,255,255,0.8)',
+    width: Dimensions.get('window').width*0.4,
+    height: Dimensions.get('window').width*0.1,
+    backgroundColor: 'rgba(255,255,255,1)',
     borderRadius: 35,
     overflow: 'hidden',
-    right: 10,
-    top: 60,
+    right: 20,
+    bottom: 30,
+    zIndex: 1,
+  },
+  btnCount: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    position: 'absolute',
+    width: Dimensions.get('window').width*0.4,
+    height: Dimensions.get('window').width*0.1,
+    backgroundColor: 'rgba(255,255,255,1)',
+    borderRadius: 35,
+    overflow: 'hidden',
+    left: 20,
+    bottom: 30,
     zIndex: 1,
   },
 });
