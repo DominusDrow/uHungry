@@ -4,11 +4,13 @@ import { Icon } from '@rneui/themed';
 
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { set } from 'react-native-reanimated';
 
+import { useDispatch } from 'react-redux';
+import * as cartActions from '../../store/actions/cartActions';
 
 export const ScreenProduct = ({ navigation, route }) => {
 
+  const dispatch = useDispatch();
 
   const cantidadItems = useSelector(state => state.cart.cantidadItems);
   const cartTotal = useSelector(state => state.cart.total);
@@ -16,6 +18,17 @@ export const ScreenProduct = ({ navigation, route }) => {
   
   const [count, setCount] = useState(1);
   const { productInfo } = route.params;
+
+
+  const addToCart = () => {
+    try{
+      dispatch(cartActions.addToCart(productInfo, count));
+    }
+    catch(err){
+      console.log(err);
+    }
+      
+  }
 
   const redirectBack = () => {
     navigation.goBack();
