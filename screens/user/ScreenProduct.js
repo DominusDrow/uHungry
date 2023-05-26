@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { useDispatch } from 'react-redux';
-import * as cartActions from '../../store/actions/cartActions';
+import * as cartActions from '../../validators/actions/cartActions';
 
 export const ScreenProduct = ({ navigation, route }) => {
 
