@@ -1,13 +1,15 @@
 export const ADD_TO_CART = "ADD_TO_CART";
 export const DELETE_ITEM = "DELETE_ITEM";
 export const MINUS_ITEM = "MINUS_ITEM";
+export const PLUS_ITEM = "PLUS_ITEM";
 export const DELETE_ALL_ITEMS = "DELETE_ALL_ITEMS";
 
 
-export const addToCart = (item) => {
+export const addToCart = (item, count) => {
   return {
     type: ADD_TO_CART,
     item: item,
+    count: count,
   };1
 };
 

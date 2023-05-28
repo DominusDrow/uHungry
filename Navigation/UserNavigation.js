@@ -8,6 +8,7 @@ import ScreenMainUser from "../screens/user/ScreenMainUser";
 import { ScreenRestaurant } from '../screens/user/ScreenRestaurant';
 import { ScreenProduct } from '../screens/user/ScreenProduct';
 import ScreenSettings from '../screens/user/ScreenSettings';
+import ScreenCart from '../screens/user/ScreenCart';
 
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
@@ -78,6 +79,11 @@ export const StackMain = () => {
       <Stack.Screen
         name="ScreenProduct"
         component={ScreenProduct}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="ScreenCart"
+        component={ScreenCart}
         options={{ headerShown: false }}
       />
 

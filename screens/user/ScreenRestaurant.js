@@ -1,19 +1,26 @@
 import { View, Text, Image, StyleSheet, Dimensions, SafeAreaView, Platform, StatusBar, ScrollView, FlatList }  from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Icon } from '@rneui/themed';
+import { useSelector } from 'react-redux';
 
 import ProductCard from '../../components/ProductCard';
 
 export const ScreenRestaurant = ({ navigation, route }) => {
 
+  const cart = useSelector(state => state.cart.items);
+
   const { productInfo } = route.params;
 
   const redirect = () => {
-    navigation.navigate('ScreenProduct', { productInfo });
+    console.log(cart);
   }
 
   const redirectBack = () => {
     navigation.goBack();
+  }
+
+  const redirectCart = () => {
+    navigation.navigate('ScreenCart');
   }
 
   return (
@@ -72,6 +79,16 @@ export const ScreenRestaurant = ({ navigation, route }) => {
         />
 
       </ScrollView>
+
+      {cart && cart.length > 0 ? (
+      <View style={styles.btnCart}>
+        <TouchableOpacity onPress={redirectCart} style={{alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%'}}>
+          <Text style={{color: 'white', fontWeight: 'bold', fontSize: 20}}>Ver Carrito</Text>
+        </TouchableOpacity>
+      </View>
+      ) : null}
+
+
 
     </SafeAreaView>
   );
@@ -134,6 +151,17 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     right: 10,
     top: 60,
+    zIndex: 1,
+  },
+  btnCart: {
+    position: 'absolute',
+    width: Dimensions.get('window').width*0.8,
+    height: Dimensions.get('window').width*0.1,
+    backgroundColor: 'rgba(0,100,230,0.8)',
+    borderRadius: 35,
+    overflow: 'hidden',
+    alignSelf: 'center',
+    bottom: 10,
     zIndex: 1,
   },
 });

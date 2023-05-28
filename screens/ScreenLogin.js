@@ -42,7 +42,7 @@ const ScreenLogin = ({ navigation }) => {
         }}
         titleStyle={{ fontWeight: 'bold', fontSize: 23 }}
         containerStyle={{
-          marginHorizontal: 100,
+          alignSelf: 'center',
           height: 50,
           width: 200,
           marginVertical: 50,
@@ -60,7 +60,7 @@ const ScreenLogin = ({ navigation }) => {
         }}
         titleStyle={{ fontWeight: 'bold', fontSize: 23 }}
         containerStyle={{
-          marginHorizontal: 100,
+          alignSelf: 'center',
           height: 50,
           width: 200,
         }}

@@ -23,6 +23,7 @@ export const ScreenProduct = ({ navigation, route }) => {
   const addToCart = () => {
     try{
       dispatch(cartActions.addToCart(productInfo, count));
+      redirectBack();
     }
     catch(err){
       console.log(err);
@@ -61,7 +62,7 @@ export const ScreenProduct = ({ navigation, route }) => {
       </View>
 
       <View style={styles.btnAdd}>
-        <TouchableOpacity  style={{alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%', backgroundColor:'lightgreen'}}>
+        <TouchableOpacity onPress={addToCart}  style={{alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%', backgroundColor:'lightgreen'}}>
           <Text style={{color:"white"}}>Agregar</Text>
         </TouchableOpacity>
       </View>
