@@ -1,11 +1,17 @@
 import { View, Text } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 
 export default function ScreenFinances({ navigation }) {
 
   return (
+  <SafeAreaView>
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>WORK IN PROGRESS</Text>
-    </View>
+      <TouchableOpacity>
+        <Text>Presiona aquí</Text>
+      </TouchableOpacity>
+    </View>  
+  </SafeAreaView>
+    
   );
 }
