@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT, LOGIN_ADMIN} from '../actions/authActions'
+import { LOGIN, LOGOUT, LOGIN_ADMIN, UPDATE_STATUS} from '../actions/authActions';
 
 const initialState = {
     user: 'guest',
@@ -21,6 +21,12 @@ export default (state = initialState, action) => {
             return{
                 user: 'guest',
             }
+        case UPDATE_STATUS:
+            return{
+                ...state,
+                status: action.status,
+            }
+
     }
     return state;
 }

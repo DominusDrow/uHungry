@@ -18,7 +18,8 @@ export default function cartReducer (state=initialState, action){
                 return{
                     total:state.total+(action.item.cost*count),
                     items: state.items,
-                    cantidadItems: state.cantidadItems+count
+                    cantidadItems: state.cantidadItems+count,
+                    statusOrder: state.statusOrder
                 }
             }
             if(item.quantity == 0){
@@ -27,7 +28,8 @@ export default function cartReducer (state=initialState, action){
                 return{
                     total:state.total+(action.item.cost*count),
                     items: state.items.concat(action.item),
-                    cantidadItems: state.cantidadItems+count
+                    cantidadItems: state.cantidadItems+count,
+                    statusOrder: state.statusOrder
                 }
  
 
@@ -38,7 +40,8 @@ export default function cartReducer (state=initialState, action){
             return{
                 total:state.total+action.item.cost,
                 items: state.items,
-                cantidadItems: state.cantidadItems+1    
+                cantidadItems: state.cantidadItems+1,    
+                statusOrder: state.statusOrder
             }
         case MINUS_ITEM:
             if(action.item.quantity == 1){
@@ -48,14 +51,16 @@ export default function cartReducer (state=initialState, action){
                 return{
                     total: state.total-(action.item.cost*valorARestar),
                     items: nuevoItems,
-                    cantidadItems: state.cantidadItems-1
+                    cantidadItems: state.cantidadItems-1,
+                    statusOrder: state.statusOrder
                 }
             } else {
                 action.item.quantity = action.item.quantity-1
                 return{
                     total: state.total-action.item.cost,
                     items: state.items,
-                    cantidadItems: state.cantidadItems-1
+                    cantidadItems: state.cantidadItems-1,
+                    statusOrder: state.statusOrder
                 }
             }
         case DELETE_ITEM:
@@ -66,7 +71,9 @@ export default function cartReducer (state=initialState, action){
             return{
                 total: state.total-(action.item.cost*valorARestar),
                 items: nuevoItems,
-                cantidadItems: state.cantidadItems - valorARestar
+                cantidadItems: state.cantidadItems - valorARestar,
+                statusOrder: state.statusOrder
+
             }
         case DELETE_ALL_ITEMS:
             for (let objeto of state.items){
@@ -77,13 +84,7 @@ export default function cartReducer (state=initialState, action){
                 total: state.total*0,
                 items: nuevoItems2,
                 cantidadItems: state.cantidadItems*0,
-            }
-        case UPDATE_STATUS:
-            return{
-                total: state.total,
-                items: state.items,
-                cantidadItems: state.cantidadItems,
-                status: action.status
+                statusOrder: state.statusOrder
             }
         
     }

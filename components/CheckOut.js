@@ -5,6 +5,7 @@ import {Icon } from '@rneui/themed';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import * as cartActions from '../validators/actions/cartActions';
+import * as authActions from '../validators/actions/authActions';
 
 import { addData } from '../firebase/ReadDB';
 
@@ -27,7 +28,7 @@ const CheckOut = ({ navigation }) => {
     // Lógica para procesar el pedido aquí
     setModalVisible(false);
     addData('pedidos', cart);
-    dispatch(cartActions.updateStatus('recibido'));
+    dispatch(authActions.updateStatus('recibido'));
     dispatch(cartActions.deleteAllItems());
     navigation.navigate('ScreenMainUser');
   };

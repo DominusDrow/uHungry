@@ -1,5 +1,5 @@
 import { db } from './config';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, doc, onSnapshot } from "firebase/firestore";
 
 export const addData = async (collectionName, data) => {
     try {
@@ -9,3 +9,17 @@ export const addData = async (collectionName, data) => {
         console.error("Error adding document: ", e);
     }
 }
+
+
+export const getData = (collectionName, setData) => {
+    const unsubscribe = onSnapshot(collection(db, collectionName), (querySnapshot) => {
+      const data = [];
+      querySnapshot.forEach((doc) => {
+        data.push({ ...doc.data(), id: doc.id });
+      });
+      setData(data);
+    });
+  
+    return unsubscribe;
+  };
+

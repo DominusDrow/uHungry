@@ -2,8 +2,26 @@ import { View, Text,FlatList, StyleSheet, Dimensions, Modal ,TouchableOpacity,Sc
 import React from 'react';
 import { Divider, Icon, Button, ListItem} from '@rneui/themed';
 
-const OrderItem = ({ productInfo }) => {
+const OrderItem = ({ productInfo, tipo, setForceUpdate }) => {
   const [modalVisible, setModalVisible] = React.useState(false);
+
+  const handlAccept = () => {
+    setModalVisible(false);
+    productInfo.statusOrder = 'activo';
+    setForceUpdate((prev) => prev + 1);
+  };
+
+  const handlReject = () => {
+    setModalVisible(false);
+    productInfo.statusOrder = 'rechazado';
+    setForceUpdate((prev) => prev + 1);
+  };
+
+  const handlFinish = () => {
+    setModalVisible(false);
+    productInfo.statusOrder = 'historial';
+    setForceUpdate((prev) => prev + 1);
+  };
 
   return (
     <>
@@ -24,19 +42,24 @@ const OrderItem = ({ productInfo }) => {
         visible={modalVisible}
         onRequestClose={() => setModalVisible(false)}
       >
+        <View style={{ position: 'absolute', top: 0, left: 40, zIndex: 1 }}>
+          <TouchableOpacity onPress={() => setModalVisible(false)}>
+            <Icon name='arrow-undo-circle-outline' type='ionicon' color='black' size={30} />
+          </TouchableOpacity>
+        </View>
         <View style={styles.modalContainer}>
         <ScrollView style={{width: '80%', height: '80%', backgroundColor: 'white', borderRadius: 10, padding: 20, flexDirection: 'column'}}>
             <Text style={styles.modalText }>Detalle del pedido.</Text>
             <Text style={{fontSize: 20,fontWeight: 'normal',marginBottom: 15,marginLeft: 20,}}>ID del pedido: {productInfo.id}</Text>
             
             <Divider width={3} color='grey' marginBottom={15} />
-            <Text style={styles.modalText}>Para: </Text>
+            <Text style={styles.modalText}>Para:  Alfredo</Text>
             <Text style={{fontSize: 25,fontWeight: 'normal',marginBottom: 15,marginLeft: 60,}}>{productInfo.usuario}</Text>
             <Divider width={3} color='grey' marginBottom={15} />
 
             <Text style={styles.modalText}>Productos: </Text>
             <FlatList
-              data={productInfo.products}
+              data={productInfo.items}
               scrollEnabled={false}
               keyExtractor={(item) => item.id.toString()}
               renderItem={({ item }) => (
@@ -55,22 +78,35 @@ const OrderItem = ({ productInfo }) => {
               )}
              /> 
              
-             <Text style={styles.modalText}>Total: $ {productInfo.cost}</Text>
+             <Text style={styles.modalText}>Total: $ {productInfo.total}</Text>
              <Divider width={3} color='grey' marginBottom={15} />
              <Text style={styles.modalText}>Espera: 20 min </Text>
 
                         
             
             <View style={{flexDirection: 'row', justifyContent: 'space-evenly',}}>
+
+
+            {tipo === 'pendiente' ? (
+              <>
               <TouchableOpacity
-                onPress={() => setModalVisible(false)}>
+                onPress={handlReject}>
                   <Icon name='close-circle-outline'type='ionicon' color='black' size={80}/>
               </TouchableOpacity>
               <Text style={{fontSize: 25,fontWeight: 'normal'}}>¿Acepta el pedido?</Text>
               <TouchableOpacity 
-              onPress={() => setModalVisible(false)}>
+              onPress={handlAccept}>
                 <Icon name='checkmark-circle-outline'type='ionicon' color='black' size={80}/>
               </TouchableOpacity>
+              </>
+              ) : tipo === 'activo' ? (
+                <TouchableOpacity
+                onPress={handlFinish}>
+                  <Text style={{fontSize: 25,fontWeight: 'normal'}}>Finalizar</Text>
+              </TouchableOpacity>
+              ) : null}
+
+
             </View>
 
           </ScrollView>

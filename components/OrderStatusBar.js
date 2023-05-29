@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import { useSelector } from 'react-redux';
 
 const OrderStatusBar = ( ) => {
-  const orderStatus = useSelector((state) => state.cart.status);
+  const orderStatus = useSelector((state) => state.auth.status);
 
   const getStatusColor = () => {
     switch (orderStatus) {
