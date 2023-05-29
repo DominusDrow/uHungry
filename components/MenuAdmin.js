@@ -1,4 +1,6 @@
 import React from 'react';
+import {Image} from 'react-native';
+import icono1 from '../assets/icons/finanzas.svg';
 import { View, StyleSheet } from 'react-native';
 import { DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
 import { Ionicons } from '@expo/vector-icons';
