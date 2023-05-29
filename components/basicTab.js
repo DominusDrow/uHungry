@@ -9,6 +9,7 @@ const [index, setIndex] = React.useState(0);
 
 return (
   <>
+  
     <Tab
       value={index}
       onChange={(e) => setIndex(e)}
@@ -37,14 +38,14 @@ return (
 
 
     <TabView value={index} onChange={setIndex} animationType="spring">
-      <TabView.Item style={{ flex: 1, alignItems: 'center'}}>
-        <ScreenOrders/>
+      <TabView.Item style={{width: '100%' }}>
+        <ScreenOrders />
       </TabView.Item>
       <TabView.Item style={{ flex: 1, alignItems: 'center',}}>
         
       </TabView.Item>
       <TabView.Item style={{ flex: 1, alignItems: 'center', borderColor: 'red' , borderWidth:5}}>
-        <Text style={{borderColor: 'red' , borderWidth:5}}>Estos son los cosos</Text>
+        <Text h1>Hola</Text>
       </TabView.Item>
     </TabView>
   </>
