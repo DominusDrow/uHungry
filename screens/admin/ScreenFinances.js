@@ -8,7 +8,7 @@ export default function ScreenFinances({ navigation }) {
   <SafeAreaView>
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <TouchableOpacity>
-        <Text>Presiona aquí</Text>
+        <Text>Presiona aquí HOLA</Text>
       </TouchableOpacity>
     </View>  
   </SafeAreaView>
