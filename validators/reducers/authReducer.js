@@ -2,6 +2,7 @@ import { LOGIN, LOGOUT, LOGIN_ADMIN} from '../actions/authActions'
 
 const initialState = {
     user: 'guest',
+    status: 'comprando',
 }
 
 export default (state = initialState, action) => {

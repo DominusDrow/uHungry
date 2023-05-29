@@ -4,7 +4,7 @@ const initialState = {
     total:0,
     items:[],
     cantidadItems:0,
-    status: 'comprando',
+    statusOrder: 'pendiente'
 }
 export default function cartReducer (state=initialState, action){
     const item = action.item;
@@ -27,7 +27,7 @@ export default function cartReducer (state=initialState, action){
                 return{
                     total:state.total+(action.item.cost*count),
                     items: state.items.concat(action.item),
-                    cantidadItems: state.cantidadItems+1
+                    cantidadItems: state.cantidadItems+count
                 }
  
 

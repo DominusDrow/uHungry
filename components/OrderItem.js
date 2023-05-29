@@ -25,7 +25,7 @@ const OrderItem = ({ productInfo }) => {
         onRequestClose={() => setModalVisible(false)}
       >
         <View style={styles.modalContainer}>
-          <View style={{width: '80%', height: '80%', backgroundColor: 'white', borderRadius: 10, padding: 20, flexDirection: 'column'}}>
+        <ScrollView style={{width: '80%', height: '80%', backgroundColor: 'white', borderRadius: 10, padding: 20, flexDirection: 'column'}}>
             <Text style={styles.modalText }>Detalle del pedido.</Text>
             <Text style={{fontSize: 20,fontWeight: 'normal',marginBottom: 15,marginLeft: 20,}}>ID del pedido: {productInfo.id}</Text>
             
@@ -33,21 +33,47 @@ const OrderItem = ({ productInfo }) => {
             <Text style={styles.modalText}>Para: </Text>
             <Text style={{fontSize: 25,fontWeight: 'normal',marginBottom: 15,marginLeft: 60,}}>{productInfo.usuario}</Text>
             <Divider width={3} color='grey' marginBottom={15} />
-            <Text style={styles.modalText}>Productos: </Text>
 
+            <Text style={styles.modalText}>Productos: </Text>
             <FlatList
               data={productInfo.products}
+              scrollEnabled={false}
               keyExtractor={(item) => item.id.toString()}
               renderItem={({ item }) => (
-                <Text>Cantidad: {item.quantity} - Producto: {item.name}</Text>
+                <View style={{flexDirection: 'row', justifyContent: 'space-between',marginBottom: 5,}}>
+                  <Text style={{fontSize: 25,fontWeight: 'normal',marginBottom: 15,marginLeft: 60,}}>
+                  {item.quantity}X    {item.name}
+                  </Text>
+                  <View style={{marginLeft: 30,}}>
+                      <Text style={{fontSize: 25,fontWeight: 'normal',marginBottom: 15,}}>
+                        $ {item.cost}
+                        <Divider width={3} color='grey' marginBottom={15} />
+                      </Text>
+
+                  </View>
+                </View>
               )}
-             />            
+             /> 
+             
+             <Text style={styles.modalText}>Total: $ {productInfo.cost}</Text>
+             <Divider width={3} color='grey' marginBottom={15} />
+             <Text style={styles.modalText}>Espera: 20 min </Text>
+
+                        
             
-            <Button
-              title="Cerrar"
-              onPress={() => setModalVisible(false)}
-            />
-          </View>
+            <View style={{flexDirection: 'row', justifyContent: 'space-evenly',}}>
+              <TouchableOpacity
+                onPress={() => setModalVisible(false)}>
+                  <Icon name='close-circle-outline'type='ionicon' color='black' size={80}/>
+              </TouchableOpacity>
+              <Text style={{fontSize: 25,fontWeight: 'normal'}}>¿Acepta el pedido?</Text>
+              <TouchableOpacity 
+              onPress={() => setModalVisible(false)}>
+                <Icon name='checkmark-circle-outline'type='ionicon' color='black' size={80}/>
+              </TouchableOpacity>
+            </View>
+
+          </ScrollView>
         </View>
       </Modal>
     </>

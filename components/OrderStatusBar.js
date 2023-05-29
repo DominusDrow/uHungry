@@ -9,8 +9,6 @@ const OrderStatusBar = ( ) => {
     switch (orderStatus) {
       case 'recibido':
         return '#ffc107'; // Color amarillo
-      case 'aceptado':
-        return '#007bff'; // Color azul
       case 'listo':
         return '#28a745'; // Color verde
       case 'entregado':

@@ -6,11 +6,14 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import * as cartActions from '../validators/actions/cartActions';
 
+import { addData } from '../firebase/ReadDB';
+
+
 const CheckOut = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
 
     const dispatch = useDispatch();
-    const cartTotal = useSelector(state => state.cart.total);
+    const cart = useSelector(state => state.cart);
 
   const handleOpenModal = () => {
     setModalVisible(true);
@@ -23,7 +26,9 @@ const CheckOut = ({ navigation }) => {
   const handlePedir = () => {
     // Lógica para procesar el pedido aquí
     setModalVisible(false);
-    dispatch(cartActions.updateStatus('aceptado'));
+    addData('pedidos', cart);
+    dispatch(cartActions.updateStatus('recibido'));
+    dispatch(cartActions.deleteAllItems());
     navigation.navigate('ScreenMainUser');
   };
 
@@ -51,7 +56,7 @@ const CheckOut = ({ navigation }) => {
 
             <View style={styles.infoContainer}>
               <Text style={styles.infoLabel}>Total a pagar:</Text>
-              <Text style={styles.infoValue}> $ {cartTotal}</Text>
+              <Text style={styles.infoValue}> $ {cart.total}</Text>
             </View>
             <View style={styles.infoContainer}>
               <Text style={styles.infoLabel}>Método de pago:</Text>
