@@ -2,8 +2,11 @@ import { StyleSheet, View, Text } from 'react-native';
 import { Header, Icon, Avatar } from '@rneui/themed';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
+import { useSelector } from 'react-redux';
+
 
 export const HeaderCmp = ({ navigation }) => {
+  const user = useSelector(state => state.auth.user);
   return (
     <View >
 
@@ -24,12 +27,21 @@ export const HeaderCmp = ({ navigation }) => {
         rightComponent={
           <View style={styles.headerRight}>
 
+            {user=== "admin" ?
+              <TouchableOpacity
+                style={{ marginLeft: 10 }}
+                onPress={() => { navigation.navigate('Pedidos') }}
+              >
+                <Icon type="entypo" name="bell" color="white" />
+              </TouchableOpacity>
+              :
             <TouchableOpacity
               style={{ marginLeft: 10 }}
               onPress={() => { navigation.navigate('ScreenCart') }}
             >
               <Icon type="entypo" name="shopping-cart" color="white" />
             </TouchableOpacity>
+            }
           </View>
         }
         centerComponent={

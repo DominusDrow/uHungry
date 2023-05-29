@@ -11,6 +11,8 @@ export default function ScreenOrders({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center',width: Dimensions.get("window").width}}>
       {/*<OrderItem productInfo={PEDIDOS[1]}/>*/}
+
+
       
       
       <FlatList

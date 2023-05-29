@@ -25,7 +25,7 @@ const OrderItem = ({ productInfo }) => {
         onRequestClose={() => setModalVisible(false)}
       >
         <View style={styles.modalContainer}>
-          <ScrollView style={{width: '80%', height: '80%', backgroundColor: 'white', borderRadius: 10, padding: 20, flexDirection: 'column'}}>
+          <View style={{width: '80%', height: '80%', backgroundColor: 'white', borderRadius: 10, padding: 20, flexDirection: 'column'}}>
             <Text style={styles.modalText }>Detalle del pedido.</Text>
             <Text style={{fontSize: 20,fontWeight: 'normal',marginBottom: 15,marginLeft: 20,}}>ID del pedido: {productInfo.id}</Text>
             
@@ -35,29 +35,19 @@ const OrderItem = ({ productInfo }) => {
             <Divider width={3} color='grey' marginBottom={15} />
             <Text style={styles.modalText}>Productos: </Text>
 
-            {/*<FlatList
-              data={productInfo.productos}
-              
+            <FlatList
+              data={productInfo.products}
               keyExtractor={(item) => item.id.toString()}
               renderItem={({ item }) => (
-                <Text>Cantidad: </Text>
+                <Text>Cantidad: {item.quantity} - Producto: {item.name}</Text>
               )}
-             />*/}
-
-              <ListItem bottomDivider>
-                <ListItem.Content>
-                  <ListItem.Title>John Doe</ListItem.Title>
-                  <ListItem.Subtitle>President</ListItem.Subtitle>
-                </ListItem.Content>
-              </ListItem>
-
-            
+             />            
             
             <Button
               title="Cerrar"
               onPress={() => setModalVisible(false)}
             />
-          </ScrollView>
+          </View>
         </View>
       </Modal>
     </>

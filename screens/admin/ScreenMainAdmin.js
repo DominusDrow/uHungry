@@ -8,8 +8,12 @@ import ScreenOrders from './ScreenOrders';
 
 export default function ScreenMainAdmin({ navigation }) {
   return (
+    <>
+      <HeaderCmp navigation={navigation} />
+      <BasicTab navigation={navigation}/>
+    </>
+
     
-    <BasicTab/>
   );
 }
 
