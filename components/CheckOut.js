@@ -12,6 +12,7 @@ import { addData } from '../firebase/ReadDB';
 
 const CheckOut = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
+  const id = useSelector(state => state.auth.Idpedido);
 
     const dispatch = useDispatch();
     const cart = useSelector(state => state.cart);
@@ -27,7 +28,8 @@ const CheckOut = ({ navigation }) => {
   const handlePedir = () => {
     // Lógica para procesar el pedido aquí
     setModalVisible(false);
-    addData('pedidos', cart);
+    Idpedido =  addData('pedidos', cart);
+    dispatch(authActions.updateIdPedido(Idpedido));
     dispatch(authActions.updateStatus('recibido'));
     dispatch(cartActions.deleteAllItems());
     navigation.navigate('ScreenMainUser');

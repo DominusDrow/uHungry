@@ -2,6 +2,7 @@ export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 export const LOGIN_ADMIN = 'LOGIN_ADMIN';
 export const UPDATE_STATUS = 'UPDATE_STATUS';
+export const UPDATE_IDPEDIDO = 'UPDATE_IDPEDIDO';
 
 
 import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth"
@@ -52,6 +53,13 @@ export const updateStatus = (status) =>{
     return{
         type:UPDATE_STATUS,
         status:status
+    };
+}
+
+export const updateIdPedido = (id) =>{
+    return{
+        type:UPDATE_IDPEDIDO,
+        id:id
     };
 }
 

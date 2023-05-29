@@ -2,10 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import { StyleSheet, View, FlatList, Image, Dimensions, SafeAreaView } from 'react-native';
 
 const images = [
-  'https://via.placeholder.com/300x150/000000/FFFFFF?text=Image%201',
-  'https://via.placeholder.com/300x150/FF0000/FFFFFF?text=Image%202',
-  'https://via.placeholder.com/300x150/0000FF/FFFFFF?text=Image%203',
-  'https://via.placeholder.com/300x150/0000FF/FFFFFF?text=Image%204',
+  'https://i.ytimg.com/vi/bDsngZVCMiQ/maxresdefault.jpg',
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDchueeY9T_IZSLZQwLxjvgzekKzQZ1zNmGuMRwW4JvjlU9u0yyqWRoQSxP5tG0Dp2blo&usqp=CAU',
+  'https://c8.alamy.com/compes/h9ge0g/comida-tradicional-mexicana-cafe-restaurant-y-bar-brillante-color-plano-aislado-conjunto-de-banners-ilustracion-vectorial-h9ge0g.jpg',
+  'https://static.vecteezy.com/system/resources/previews/020/011/915/original/food-promotion-banner-free-editor_template.jpeg',
 ];
 
 const widthScreen = Dimensions.get("window").width;

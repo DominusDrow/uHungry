@@ -2,24 +2,29 @@ import { View, Text,FlatList, StyleSheet, Dimensions, Modal ,TouchableOpacity,Sc
 import React from 'react';
 import { Divider, Icon, Button, ListItem} from '@rneui/themed';
 
+import { updateData } from '../firebase/ReadDB';
+
 const OrderItem = ({ productInfo, tipo, setForceUpdate }) => {
   const [modalVisible, setModalVisible] = React.useState(false);
 
   const handlAccept = () => {
     setModalVisible(false);
     productInfo.statusOrder = 'activo';
+    updateData('pedidos', productInfo.id, { statusOrder: 'activo' });
     setForceUpdate((prev) => prev + 1);
   };
 
   const handlReject = () => {
     setModalVisible(false);
     productInfo.statusOrder = 'rechazado';
+    updateData('pedidos', productInfo.id, { statusOrder: 'rechazado' });
     setForceUpdate((prev) => prev + 1);
   };
 
   const handlFinish = () => {
     setModalVisible(false);
     productInfo.statusOrder = 'historial';
+    updateData('pedidos', productInfo.id, { statusOrder: 'historial' });
     setForceUpdate((prev) => prev + 1);
   };
 

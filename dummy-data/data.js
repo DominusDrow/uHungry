@@ -1,6 +1,114 @@
 export const RESTAURANT = [
   {
     id: 1,
+    name: "Facultad de Ciencias de la Computación",
+    deliveryTime: "15 - 28 min",
+    deliveryFee: 8.0,
+    rating: 4.1,
+    background:"https://sersoc.cs.buap.mx/img/fcc.jpg",
+    image: "https://www.cs.buap.mx/~posgrado/assets/img/logoposgrado.png",
+    products:[
+      {
+        id: 1,
+        name: "Torta milanesa",
+        cost: 35.0,
+        description:
+        "Torta con milanesa de cerdo, jitomate, aguacate y mayonesa",
+        image: "https://www.casademexico.es/wp-content/uploads/2022/09/Torta-de-milanesa-pagina.jpg",
+        quantity: 0,
+      },
+      {
+        id:2,
+        name: "Torta salchicha",
+        cost: 35.0,
+        description:
+        "Torta con salchicha de pavo, jitomate, aguacate y mayonesa",
+        image: "https://hispanickitchen.com/wp-content/uploads/2017/07/Torta-de-Salchichas_3-2.jpg",
+        quantity: 0,
+      },
+      {
+        id:3,
+        name: "Agua de jamaica",
+        cost: 15.0,
+        description: "1L de agua de jamaica",
+        image: "https://losmilagrosdedalila.com/wp-content/uploads/2017/03/agua-jamaica.png",
+        quantity: 0,
+      },
+      {
+        id:4,
+        name: "Coca cola",
+        cost: 19.0,
+        description: "Lata de 355mL",
+        image: "https://tiendasneto.com.mx/media/catalog/product/cache/cb1e6b076f68ee0ac6e5e542f63310fa/1/0/1040000265-1_12.jpg",
+        quantity: 0,
+      },
+      {
+        id:5,
+        name: "Galletas Chokis",
+        cost: 18.0,
+        description: "Empaque de 142.5g",
+        image: "https://agustomarket.com/wp-content/uploads/2021/12/galletas-chokis-clasica.jpg",
+        quantity: 0,
+      },
+    ]
+
+  },
+  {
+    id: 10,
+    name: "Facultad de Ciencias Físico Matemáticas",
+    deliveryTime: "18 - 25 min",
+    deliveryFee: 10.0,
+    rating: 4.0,
+    background:"https://cdn.elpopular.mx/notas/ciudadania-y-gobierno/2021/11/23/los-fisicos-de-la-buap-son-un-orgullo-para-la-institucion/5f4d2db85894dba230c3d1b91dc4eaa9.jpg",
+    image: "https://www.fcfm.buap.mx/assets/img/brand/logo-fcfm-color-full.png",
+    products:[
+      {
+        id:1,
+        name: "Torta milanesa",
+        cost: 49.0,
+        description:
+        "Torta con milanesa de cerdo, jitomate, aguacate y mayonesa",
+        image: "https://www.vvsupremo.com/wp-content/uploads/2019/10/180906_RT_Chicken-Milanesa-Torta-09-26-18_104_v1-Approvals.jpg",
+        quantity: 0,
+      },
+      {
+        id:2,
+        name: "Rebanada pizza de pepperoni",
+        cost: 20.0,
+        description: "Rebanada de pizza con pepperoni",
+        image: "https://www.crushpixel.com/big-static7/preview4/slice-pizza-pepperoni-on-scapula-110439.jpg",
+        quantity: 0,
+      },
+      {
+        id:3,
+        name: "Takis fuego",
+        cost: 17.0,
+        description: "Bolsa de Takis fuego de la marca Barcel",
+        image: "https://m.media-amazon.com/images/I/81MZnOeDrwS._AC_UF894,1000_QL80_.jpg",
+        quantity: 0,
+      },
+      {
+        id:4,
+        name: "Jugo del Valle Mango",
+        cost: 18.0,
+        description: "Jugo de mango en botella de vidrio de 413mL",
+        image: "https://www.soriana.com/dw/image/v2/BGBD_PRD/on/demandware.static/-/Sites-soriana-grocery-master-catalog/default/dwb1553c2c/images/product/0032239052000_A.jpg?sw=1000&sh=1000&sm=fit",
+        quantity: 0,
+      },
+      {
+        id:5,
+        name: "Fanta",
+        cost: 18.0,
+        description:
+        "Refresco sabor naranja embotellado de 600mL",
+        image: "https://chedrauimx.vtexassets.com/arquivos/ids/14716890/7501055303779_00.jpg?v=638195435955830000",
+        quantity: 0,
+      },
+    ]
+
+  },
+  {
+    id: 8,
     name: "Burger King",
     deliveryTime: "18 - 33 min",
     deliveryFee: 15.0,

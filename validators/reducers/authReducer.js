@@ -1,8 +1,9 @@
-import { LOGIN, LOGOUT, LOGIN_ADMIN, UPDATE_STATUS} from '../actions/authActions';
+import { LOGIN, LOGOUT, LOGIN_ADMIN, UPDATE_STATUS, UPDATE_IDPEDIDO } from "../actions/authActions";
 
 const initialState = {
     user: 'guest',
     status: 'comprando',
+    Idpedido: '',
 }
 
 export default (state = initialState, action) => {
@@ -25,6 +26,11 @@ export default (state = initialState, action) => {
             return{
                 ...state,
                 status: action.status,
+            }
+        case UPDATE_IDPEDIDO:
+            return{
+                ...state,
+                Idpedido: action.id,
             }
 
     }

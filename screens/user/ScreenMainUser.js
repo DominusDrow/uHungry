@@ -12,9 +12,20 @@ import { RESTAURANT } from '../../dummy-data/data';
 
 import { useSelector } from 'react-redux';
 
-export default function ScreenMainUser({ navigation }) {
+import { getStatus } from '../../firebase/ReadDB';
+import { useEffect, useState } from 'react';
 
-  const status = useSelector(state => state.cart.status);
+export default function ScreenMainUser({ navigation }) {
+  const [status, setStatus] = useState('comprando');
+  const Idpedido = useSelector(state => state.auth.Idpedido);
+
+  useEffect(() => {
+    if(Idpedido != ''){
+      const unsubscribe = getStatus('pedidos', Idpedido, setStatus);
+    }
+
+    return () => unsubscribe();
+  }, []);
 
   console.log(RESTAURANT.length)
   return (
@@ -22,7 +33,10 @@ export default function ScreenMainUser({ navigation }) {
 
       <HeaderCmp navigation={navigation} />
 
-      {status !== 'comprando' && <OrderStatusBar />}
+      {status === 'pendiente' || status === 'activo' ? (
+        <OrderStatusBar navigation={navigation} orderStatus={status} />
+      ) : null}
+
 
       <CarousellCmp />
 
