@@ -3,24 +3,32 @@ export const LOGOUT = 'LOGOUT';
 export const LOGIN_ADMIN = 'LOGIN_ADMIN';
 
 
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth"
 import { auth } from "../../firebase/config";
 
-export const tryLogin = (email, password) => {
+export const tryLogin = (email, password) =>{
     let user = null;
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        // ...
       })
       .catch((error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
       });    
 
-    console.log("tryLogin: ", user);
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            console.log("user");
+            return{
+                type:LOGIN,
+                login: user,
+            }
+        } else {
+            console.log("no user");
+        }
+    });
+
+
     return{
         type:LOGIN,
         login: user,
