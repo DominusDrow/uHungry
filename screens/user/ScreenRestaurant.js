@@ -80,14 +80,13 @@ export const ScreenRestaurant = ({ navigation, route }) => {
 
       </ScrollView>
 
-      {cart && cart.length > 0 ? (
-      <View style={styles.btnCart}>
-        <TouchableOpacity onPress={redirectCart} style={{alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%'}}>
-          <Text style={{color: 'white', fontWeight: 'bold', fontSize: 20}}>Ver Carrito</Text>
-        </TouchableOpacity>
-      </View>
+      {cart.length > 0 ? (
+        <View style={styles.btnCart}>
+          <TouchableOpacity onPress={redirectCart} style={{alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%'}}>
+            <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 20 }}>Ver carrito</Text>
+          </TouchableOpacity>
+        </View>
       ) : null}
-
 
 
     </SafeAreaView>

@@ -1,10 +1,35 @@
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
+export const LOGIN_ADMIN = 'LOGIN_ADMIN';
 
-export const tryLogin = (login) => {
+
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase/config";
+
+export const tryLogin = (email, password) => {
+    let user = null;
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });    
+
+    console.log("tryLogin: ", user);
     return{
         type:LOGIN,
-        login: login,
+        login: user,
+    };
+}
+
+export const tryLoginAdmin = () =>{
+    return{
+        type:LOGIN_ADMIN
     };
 }
 
@@ -15,36 +40,5 @@ export const tryLogout = () =>{
 }
 
 
-//export const tryLogin = (number, password) => {
-    //if(number == '4421234567' && password == '1234'){
-        //return{
-            //type: LOGIN,
-            //number: number
-        //};
-    //}else{
-        //throw ('Numero y/o codigo no validos')
-    //}
-//}
-
-//export const tryCel = (number) =>{
-    //if (number == '4421234567'){
-        //return{
-            //type:CEL,
-            //number: number
-        //};
-    //}else{
-        //throw ('Numero no valido')
-    //}
-//}
-
-//export const tryCode = (codeAuth) =>{
-    //if (codeAuth == '1234'){
-        //return{
-            //type:LOGIN
-        //};
-    //}else{
-        //throw('Codigo no valido')
-    //}
-//}
 
 

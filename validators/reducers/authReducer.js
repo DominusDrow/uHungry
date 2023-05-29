@@ -1,18 +1,24 @@
-import { LOGIN, LOGOUT } from '../actions/authActions'
+import { LOGIN, LOGOUT, LOGIN_ADMIN} from '../actions/authActions'
 
 const initialState = {
-    login: 'guest',
+    user: 'guest',
 }
 
-export default (state=initialState, action) => {
+export default (state = initialState, action) => {
     switch (action.type) {
         case LOGIN:
             return{
-                login: action.login,
+                ...state,
+                user: action.login,
+            }
+        case LOGIN_ADMIN:
+            return{
+                ...state,
+                user: 'admin',
             }
         case LOGOUT:
             return{
-                login: 'guest',
+                user: 'guest',
             }
     }
     return state;

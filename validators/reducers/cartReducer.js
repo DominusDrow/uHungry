@@ -1,25 +1,38 @@
-import {ADD_TO_CART, DELETE_ALL_ITEMS, DELETE_ITEM, MINUS_ITEM, PLUS_ITEM} from "../actions/cartActions";
+import {ADD_TO_CART, DELETE_ALL_ITEMS, DELETE_ITEM, MINUS_ITEM, PLUS_ITEM, UPDATE_STATUS} from "../actions/cartActions";
 
 const initialState = {
     total:0,
     items:[],
     cantidadItems:0,
+    status: 'comprando',
 }
 export default function cartReducer (state=initialState, action){
     const item = action.item;
     const count = action.count;
+    const status = action.status;
     switch(action.type){
         case ADD_TO_CART:
+            const isItem = state.items.find(item => item == action.item);
+            if(isItem){
+                item.quantity = count;
+                return{
+                    total:state.total+(action.item.cost*count),
+                    items: state.items,
+                    cantidadItems: state.cantidadItems+count
+                }
+            }
             if(item.quantity == 0){
                 item.id = Math.floor(Math.random() * 1001).toString()
+                item.quantity = count;
+                return{
+                    total:state.total+action.item.cost,
+                    items: state.items.concat(action.item),
+                    cantidadItems: state.cantidadItems+1
+                }
+ 
+
             }
-            item.quantity = count;
-            return{
-                total:state.total+action.item.cost,
-                items: state.items.concat(action.item),
-                cantidadItems: state.cantidadItems+1
-            }
-             
+            
         case PLUS_ITEM:
             item.quantity = item.quantity+1
             return{
@@ -65,6 +78,14 @@ export default function cartReducer (state=initialState, action){
                 items: nuevoItems2,
                 cantidadItems: state.cantidadItems*0,
             }
+        case UPDATE_STATUS:
+            return{
+                total: state.total,
+                items: state.items,
+                cantidadItems: state.cantidadItems,
+                status: action.status
+            }
+        
     }
     return state;
 }

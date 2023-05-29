@@ -6,15 +6,23 @@ import SearchBarCmp from '../../components/SearchBarCmp';
 
 import RestaurantCard from '../../components/RestaurantCard';
 
+import OrderStatusBar from '../../components/OrderStatusBar';
+
 import { RESTAURANT } from '../../dummy-data/data';
 
+import { useSelector } from 'react-redux';
+
 export default function ScreenMainUser({ navigation }) {
+
+  const status = useSelector(state => state.cart.status);
 
   console.log(RESTAURANT.length)
   return (
     <View>
 
       <HeaderCmp navigation={navigation} />
+
+      {status !== 'comprando' && <OrderStatusBar />}
 
       <CarousellCmp />
 

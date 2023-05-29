@@ -26,7 +26,7 @@ export const HeaderCmp = ({ navigation }) => {
 
             <TouchableOpacity
               style={{ marginLeft: 10 }}
-              onPress={() => { console.log('search') }}
+              onPress={() => { navigation.navigate('ScreenCart') }}
             >
               <Icon type="entypo" name="shopping-cart" color="white" />
             </TouchableOpacity>

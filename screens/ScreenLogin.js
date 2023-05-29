@@ -11,16 +11,12 @@ const ScreenLogin = ({ navigation }) => {
 
 
   const LoginUser = () => {
-    try {
-      dispatch(authActions.tryLogin('user'));
-    } catch (e) {
-      Alert.alert("Error", e.toString(), [{ text: "Ok" }]);
-    }
+    navigation.navigate("RegistroUsuario");
   };
 
   const LoginAdmin = () => {
     try {
-      dispatch(authActions.tryLogin('admin'));
+      dispatch(authActions.tryLoginAdmin());
     } catch (e) {
       Alert.alert("Error", e.toString(), [{ text: "Ok" }]);
     }

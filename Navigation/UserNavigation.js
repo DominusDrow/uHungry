@@ -10,6 +10,8 @@ import { ScreenProduct } from '../screens/user/ScreenProduct';
 import ScreenSettings from '../screens/user/ScreenSettings';
 import ScreenCart from '../screens/user/ScreenCart';
 
+import RegistroUsuario from '../screens/RegistrarUsuario';
+
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 
@@ -53,6 +55,11 @@ export const StackLogin = () => {
       <Stack.Screen
         name={"ScreenLogin"}
         component={ScreenLogin}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name={"RegistroUsuario"}
+        component={RegistroUsuario}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
