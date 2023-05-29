@@ -25,7 +25,7 @@ export default function cartReducer (state=initialState, action){
                 item.id = Math.floor(Math.random() * 1001).toString()
                 item.quantity = count;
                 return{
-                    total:state.total+action.item.cost,
+                    total:state.total+(action.item.cost*count),
                     items: state.items.concat(action.item),
                     cantidadItems: state.cantidadItems+1
                 }
