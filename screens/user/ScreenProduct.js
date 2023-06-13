@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { useDispatch } from 'react-redux';
-import * as cartActions from '../../validators/actions/cartActions';
+import * as cartActions from '../../redux/cart/cartReducer';
 
 export const ScreenProduct = ({ navigation, route }) => {
 
@@ -22,7 +22,7 @@ export const ScreenProduct = ({ navigation, route }) => {
 
   const addToCart = () => {
     try{
-      dispatch(cartActions.addToCart(productInfo, count));
+      dispatch(cartActions.addToCart({item: productInfo, count}));
       redirectBack();
     }
     catch(err){

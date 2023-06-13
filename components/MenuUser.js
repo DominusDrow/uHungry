@@ -5,7 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { Avatar } from '@rneui/themed';
 
 import { useDispatch } from "react-redux";
-import * as authActions from "../validators/actions/authActions";
+import * as authActions from "../redux/authentication/authReducer";
 
 
 
@@ -15,7 +15,7 @@ const MenuUser = (props) => {
 
   const logoutHandler = () => {
     try {
-      dispatch(authActions.tryLogout());
+      dispatch(authActions.logout());
     } catch (e) {
       Alert.alert("Error", e.toString(), [{ text: "Ok" }]);
     }

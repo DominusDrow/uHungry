@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, Alert, StyleSheet, Dimensions,Image } from 'react-native';
 import { useDispatch } from "react-redux";
-import * as authActions from "../validators/actions/authActions";
 import { Input } from '@rneui/themed';
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+
+import { tryLogin } from '../firebase/auth'
 
 
 const RegistroUsuario = ({ navigation }) => {
@@ -13,7 +14,8 @@ const RegistroUsuario = ({ navigation }) => {
 
   const loginUser = () => {
     try {
-      dispatch(authActions.tryLogin(correo, contrasena));
+      console.log("hola :)");
+      //await tryLogin(correo, contrasena);
     } catch (e) {
       Alert.alert("Error", e.toString(), [{ text: "Ok" }]);
     }
@@ -31,14 +33,14 @@ const RegistroUsuario = ({ navigation }) => {
           placeholder='Usuario'
           leftIcon={<Icon type="MaterialCommunityIcons" name="account" size={24}/>}
           value={correo}
-          onChangeText={(text) => setCorreo(text)}
+          onChangeText={(text) => setCorreo(text) }
           />
           <Input
             placeholder='Contraseña'
             leftIcon={{ type: 'font-awesome', name: 'lock' }}
             value={contrasena}
             secureTextEntry={true}
-            onChangeText={(text) => setContrasena(text)}
+            onChangeText={(text) => setContrasena(text) }
           />
         </View>
         <View style={{position:"absolute", marginTop: "100%", marginLeft: "10%"}}>

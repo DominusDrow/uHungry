@@ -6,7 +6,7 @@ import { StackLogin, StackMain} from './UserNavigation';
 import { StackAdmin } from './AdminNavigator';
 
 const LoginValidation = (props) => {
-    const Auth = useSelector(state=>state.auth.user);
+    const Auth = useSelector( state => state.auth.user );
     return (
         <NavigationContainer>
             {Auth === 'admin' ? <StackAdmin /> : Auth === 'guest' ? <StackLogin /> : <StackMain />}

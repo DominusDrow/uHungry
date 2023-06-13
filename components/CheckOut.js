@@ -4,8 +4,8 @@ import {Icon } from '@rneui/themed';
 
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import * as cartActions from '../validators/actions/cartActions';
-import * as authActions from '../validators/actions/authActions';
+import * as cartActions from '../redux/cart/cartReducer';
+import * as authActions from '../redux/authentication/authReducer';
 
 import { addData } from '../firebase/ReadDB';
 

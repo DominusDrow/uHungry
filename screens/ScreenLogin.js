@@ -3,7 +3,7 @@ import { View, StyleSheet, Text, Image, Dimensions, Alert} from "react-native";
 import { Button } from '@rneui/themed';
 
 import { useDispatch } from "react-redux";
-import * as authActions from "../validators/actions/authActions";
+import * as authActions from "../redux/authentication/authReducer";
 
 const ScreenLogin = ({ navigation }) => {
 
@@ -16,7 +16,7 @@ const ScreenLogin = ({ navigation }) => {
 
   const LoginAdmin = () => {
     try {
-      dispatch(authActions.tryLoginAdmin());
+      dispatch(authActions.loginAdmin());
     } catch (e) {
       Alert.alert("Error", e.toString(), [{ text: "Ok" }]);
     }

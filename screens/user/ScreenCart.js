@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Icon } from '@rneui/themed';
 
 import CheckOut from '../../components/CheckOut';
-import * as cartActions from '../../validators/actions/cartActions';
+import * as cartActions from '../../redux/cart/cartReducer';
 
 export default function ScreenCart({ navigation }) {
   const cart = useSelector((state) => state.cart.items);
